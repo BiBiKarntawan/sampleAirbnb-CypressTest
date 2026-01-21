@@ -1,12 +1,5 @@
 # HotelJSWithCypressTest
 
-Assignment 3 Database Applications 
------------------------------------------
-Created By 
-            Karntawan Udomluksopin 
-            Master of Information Technology, RMIT
------------------------------------------
-
 -----------------------------------------
 Airbnb Booking App – Setup
 -----------------------------------------
@@ -68,74 +61,74 @@ File Structure
 ---------------------------------------
 Testing Notes & Test Cases
 ---------------------------------------
-TC01 find listings by location Barcelona
-Compass Scripts: 
-db.listingsAndReviews.aggregate([
-  {
-    $match: {
-      "address.market": "Barcelona"
-    }
-  },
-  {
-    $count: "totalListings"
-  }
-])
-Expected Results : count 632 results
+            TC01 find listings by location Barcelona
+            Compass Scripts: 
+            db.listingsAndReviews.aggregate([
+              {
+                $match: {
+                  "address.market": "Barcelona"
+                }
+              },
+              {
+                $count: "totalListings"
+              }
+            ])
+            Expected Results : count 632 results
 ---------------------------------------
 
-TC02 find listings by location 'Porto', property type 'Apartment', Bedrooms '3'
-Compass Scripts:
-db.listingsAndReviews.aggregate([
-  {
-    $match: {
-      "address.market": "Porto",
-      bedrooms: 3,
-      property_type: "Apartment"
-    }
-  },
-  {
-    $count: "totalListings"
-  }
-])
-Expected Results : count 33 results
+            TC02 find listings by location 'Porto', property type 'Apartment', Bedrooms '3'
+            Compass Scripts:
+            db.listingsAndReviews.aggregate([
+              {
+                $match: {
+                  "address.market": "Porto",
+                  bedrooms: 3,
+                  property_type: "Apartment"
+                }
+              },
+              {
+                $count: "totalListings"
+              }
+            ])
+            Expected Results : count 33 results
 ---------------------------------------
 
-TC03 find listings by location 'Bangkok'
-Compass Scripts: 
-db.listingsAndReviews.aggregate([
-  {
-    $match: {
-      "address.market": "Bangkok"
-    }
-  },
-  {
-    $count: "totalListings"
-  }
-])
-Expected Results : result not found
+            TC03 find listings by location 'Bangkok'
+            Compass Scripts: 
+            db.listingsAndReviews.aggregate([
+              {
+                $match: {
+                  "address.market": "Bangkok"
+                }
+              },
+              {
+                $count: "totalListings"
+              }
+            ])
+            Expected Results : result not found
 ---------------------------------------
 
-TC04 Make a booking on website and find that booking via Compass with booking ID
-Compass Scripts: 
-db.bookings.find({ bookingID: "B1922" })
-Expected Results : show all bookings related to bookingID B1922
-
-TC05 Find all bookings that booked under a customer name
-Compass Scripts: 
-db.bookings.aggregate([
-  {
-    $match: {
-      "clientName": "bibi"
-    }
-  }
-])
-Expected Results : show all bookings related to customer name 'bibi'
+            TC04 Make a booking on website and find that booking via Compass with booking ID
+            Compass Scripts: 
+            db.bookings.find({ bookingID: "B1922" })
+            Expected Results : show all bookings related to bookingID B1922
+            
+            TC05 Find all bookings that booked under a customer name
+            Compass Scripts: 
+            db.bookings.aggregate([
+              {
+                $match: {
+                  "clientName": "bibi"
+                }
+              }
+            ])
+            Expected Results : show all bookings related to customer name 'bibi'
 ---------------------------------------
-
-TC06 find all customers that made bookings with that property
-Compass Scripts:
-db.bookings.find({ listingID: "15762813" })
-Expected Results : show all bookings related to listingID 15762813
+            
+            TC06 find all customers that made bookings with that property
+            Compass Scripts:
+            db.bookings.find({ listingID: "15762813" })
+            Expected Results : show all bookings related to listingID 15762813
 ---------------------------------------
 
 
