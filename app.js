@@ -1,13 +1,14 @@
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 const path = require('path');
+require('dotenv').config();
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 const PORT = 3000;
 
 // MongoDB connection
-const uri = 'mongodb+srv://REDACTED:REDACTED@dba-cluster.p4jcq2w.mongodb.net/sample_airbnb?retryWrites=true&w=majority';
-const client = new MongoClient(uri);
+const client = new MongoClient(MONGODB_URI);
 let listingsCollection;
 let bookingsCollection;
 
