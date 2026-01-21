@@ -1,1 +1,141 @@
 # HotelJSWithCypressTest
+
+Assignment 3 Database Applications 
+-----------------------------------------
+Created By 
+            Karntawan Udomluksopin 
+            Master of Information Technology, RMIT
+-----------------------------------------
+
+-----------------------------------------
+Airbnb Booking App – Setup
+-----------------------------------------
+This is a simple Node.js + Express.js application connected to MongoDB Atlas that allows users to:
+- Search Airbnb property listings by location, property type, number of rooms
+- View listing details, price, reviews
+- Submit a booking form
+- View booking confirmation
+
+---------------------------------------
+Local Server Info
+---------------------------------------
+Start the server using:
+
+    npm start
+
+The app runs on:
+
+    http://localhost:3000/
+
+Ensure port 3000 is available. If it's in use, update the port in `app.js` accordingly.
+
+---------------------------------------
+Required Node.js Libraries
+---------------------------------------
+Run the following command in the project directory to install dependencies:
+
+    npm install
+
+This will install:
+
+- express
+- mongodb
+- ejs
+
+---------------------------------------
+ MongoDB Setup
+---------------------------------------
+
+- This app connects to MongoDB Atlas using the URI in `app.js`.
+- Database: `sample_airbnb`
+- Collections used:
+  - `listingsAndReviews` (read)
+  - `bookings` (write)
+
+
+
+---------------------------------------
+File Structure
+---------------------------------------
+- app.js – Main server application
+- views/
+  - index.ejs – Homepage
+  - booking.ejs – Booking page
+  - confirmation.ejs – Confirmation page
+- public/
+  - styles.css – Styling for UI
+
+---------------------------------------
+Testing Notes & Test Cases
+---------------------------------------
+TC01 find listings by location Barcelona
+Compass Scripts: 
+db.listingsAndReviews.aggregate([
+  {
+    $match: {
+      "address.market": "Barcelona"
+    }
+  },
+  {
+    $count: "totalListings"
+  }
+])
+Expected Results : count 632 results
+---------------------------------------
+
+TC02 find listings by location 'Porto', property type 'Apartment', Bedrooms '3'
+Compass Scripts:
+db.listingsAndReviews.aggregate([
+  {
+    $match: {
+      "address.market": "Porto",
+      bedrooms: 3,
+      property_type: "Apartment"
+    }
+  },
+  {
+    $count: "totalListings"
+  }
+])
+Expected Results : count 33 results
+---------------------------------------
+
+TC03 find listings by location 'Bangkok'
+Compass Scripts: 
+db.listingsAndReviews.aggregate([
+  {
+    $match: {
+      "address.market": "Bangkok"
+    }
+  },
+  {
+    $count: "totalListings"
+  }
+])
+Expected Results : result not found
+---------------------------------------
+
+TC04 Make a booking on website and find that booking via Compass with booking ID
+Compass Scripts: 
+db.bookings.find({ bookingID: "B1922" })
+Expected Results : show all bookings related to bookingID B1922
+
+TC05 Find all bookings that booked under a customer name
+Compass Scripts: 
+db.bookings.aggregate([
+  {
+    $match: {
+      "clientName": "bibi"
+    }
+  }
+])
+Expected Results : show all bookings related to customer name 'bibi'
+---------------------------------------
+
+TC06 find all customers that made bookings with that property
+Compass Scripts:
+db.bookings.find({ listingID: "15762813" })
+Expected Results : show all bookings related to listingID 15762813
+---------------------------------------
+
+
