@@ -47,8 +47,6 @@ This will install:
  MongoDB Setup
 ---------------------------------------
 
-'mongodb+srv://REDACTED:REDACTED@dba-cluster.p4jcq2w.mongodb.net/sample_airbnb?retryWrites=true&w=majority'
-
 - This app connects to MongoDB Atlas using the URI in `app.js`.
 - Database: `sample_airbnb`
 - Collections used:
