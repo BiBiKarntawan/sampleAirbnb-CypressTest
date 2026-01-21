@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Confirmed!</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Booking Confirmed!</h1>
+      <p>Booking ID: <%= booking.bookingID %></p>
+      <p>Client: <%= booking.clientName %> (Phone: <%= booking.clientPhone %>)</p>
+      <p>Dates: <%= booking.startDate.toDateString() %> to <%= booking.endDate.toDateString() %></p>
+      <ul>
+      </ul>
+      <a href="/">Back to Home</a>
+    </div>
+  </div>
+</body>

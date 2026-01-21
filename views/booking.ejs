@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Property - <%= listing.name %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Booking Details: <%= listing.name %></h1>
+
+      <form action="/confirm" method="POST" class="booking-form">
+        <input type="hidden" name="listing_id" value="<%= listing._id %>">
+
+        <label>Check In</label>
+        <input type="date" placeholder="enter check-in date" name="start_date" required>
+
+        <label>Check Out</label>
+        <input type="date" placeholder="enter check-out date" name="end_date" required>
+        
+        <h2>Your Details</h2>
+
+        <label>Your Name</label>
+        <input type="text" placeholder="enter your name" name="client_name" required>
+
+        <label>Email Address</label>
+        <input type="text" placeholder="enter your email address" name="client_email" required>
+
+        <label>Your Mobile No</label>
+        <input type="text" placeholder="enter your email address" name="client_phone" required>
+
+        <label>Postal Address</label>
+        <input type="text" placeholder="Please provide your postal address" name="address">
+
+        <label>Residential Address</label>
+        <input type="text" placeholder="Please provide your Residential address(Cannot be post box address)" name="resident_address">
+
+        <button type="submit">Book Now</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
